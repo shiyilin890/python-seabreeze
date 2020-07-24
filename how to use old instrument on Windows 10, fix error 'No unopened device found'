@@ -1,0 +1,19 @@
+I have an old ocean optics spectrometer (USB2000), I used seabreeze Python library to record data, and seabreeze is working fine on both my old Windows7 laptop and new Mac (macOS 10.15). However, when I tried to use seabreeze on my new Windows 10 laptop, it failed, and keep giving this error:
+
+spec = Spectrometer.from_first_available()
+File "somefile.py" 
+raise cls._backend.SeaBreezeError("No unopened device found.")
+seabreeze.cseabreeze._wrapper.SeaBreezeError: No unopened device found.
+
+Actually seabreeze is installed and functional, but the driver of spectrometer is missing. The reason, based on ocean optics itself, is "Ocean Optics has not [yet] paid to have our drivers 'signed' by Microsoft for Windows 8/8.1. We did have this done for earlier versions of Windows".
+
+The solution is to install a driver for spectrometer on Windows 10. Drivers can be found on their website:
+https://www.oceaninsight.com/support/software-downloads/
+Steps:
+1. You can either buy a driver, or use the open source one:
+"SeaBreeze Open-Source OEM Device Driver"
+ download and unzip, 
+2. plug in the spectrometer, open the window "Devices and Printers", you'll find the spectrometer under the tab "Unspecified", then right click choose "Properties" which opens a new window, 
+3. click the tab "Hardware", click button below "Properties" which opens new window,
+4. click "Update Driver" button, then choose "Browser My Computer", then select the SeaBreeze folder you just unzipped.
+Now everything works!
